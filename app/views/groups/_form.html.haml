@@ -1,0 +1,16 @@
+= if user_signed_in? 
+  = simple_form_for(@group, html: {class: "form-horizontal"}) do |f| 
+    = if @group.errors.any? 
+      %div{id=>"error_explanation"}
+        %h2
+          =pluralize(@group.errors.count, "error") 
+          prohibited this group from being saved:
+        %ul
+          = @group.errors.full_messages.each do |msg| 
+            %li= msg
+
+    %p Group Name
+    = f.input :group_name, :label => '-' 
+
+    %div{:class =>"form-actions"}
+      = f.button :submit, "Create Group", class: "btn btn-info" 
