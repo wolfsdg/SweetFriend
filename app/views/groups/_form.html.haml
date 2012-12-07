@@ -1,12 +1,12 @@
-= if user_signed_in? 
+- if user_signed_in? 
   = simple_form_for(@group, html: {class: "form-horizontal"}) do |f| 
-    = if @group.errors.any? 
+    - if @group.errors.any? 
       %div{id=>"error_explanation"}
         %h2
           =pluralize(@group.errors.count, "error") 
           prohibited this group from being saved:
         %ul
-          = @group.errors.full_messages.each do |msg| 
+          - @group.errors.full_messages.each do |msg| 
             %li= msg
 
     %p Group Name

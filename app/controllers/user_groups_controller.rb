@@ -7,9 +7,9 @@ class UserGroupsController < ApplicationController
     @user_group.save 
 
     respond_to do |format|
-      format.html{redirect_to groups_path, notice: "new group"}
+      format.html{redirect_to @group, notice: "Estas Dentro de este grupo"}
       format.js 
-    end 
+    end
   end
 
   def destroy
@@ -18,7 +18,7 @@ class UserGroupsController < ApplicationController
     @user_group.destroy
 
     respond_to do |format|
-      format.html{redirect_to concerts_path, notice: "destroy"}
+      format.html{redirect_to groups_path, notice: "destroy"}
       format.js
     end
   end

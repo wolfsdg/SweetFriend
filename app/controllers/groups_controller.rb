@@ -33,6 +33,7 @@ class GroupsController < ApplicationController
         usergroup = UserGroup.new
         usergroup.user_id = current_user.id
         usergroup.group_id = @group.id
+        usergroup.group_leader = true
         usergroup.save
         format.html { redirect_to @group, notice: 'Post of Group was successfully created.' }
         format.json { render json: @group, group: :created, location: @group }
@@ -63,6 +64,7 @@ class GroupsController < ApplicationController
 
   def destroy
     @group = Group.find(params[:id])
+    @group.user_groups.destroy_all
     @group.destroy
 
     respond_to do |format|

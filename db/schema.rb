@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206223259) do
+ActiveRecord::Schema.define(:version => 20121207022059) do
 
   create_table "groups", :force => true do |t|
     t.string   "group_name"
@@ -20,10 +20,12 @@ ActiveRecord::Schema.define(:version => 20121206223259) do
   end
 
   create_table "user_groups", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.integer  "group_id"
     t.integer  "user_id"
+    t.boolean  "group_leader", :default => false
+    t.integer  "friend_id"
   end
 
   create_table "users", :force => true do |t|
